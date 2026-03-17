@@ -1,19 +1,21 @@
+const BASE = import.meta.env.BASE_URL;
+
 export const ASSETS = {
   AVATARS: {
-    mom_normal: "/assets/img/mom_normal.png",
-    mom_happy: "/assets/img/mom_happy.png",
-    mom_thinking: "/assets/img/mom_thinking.png",
-    mom_surprised: "/assets/img/mom_surprised.png",
-    mom_sad: "/assets/img/mom_sad.png",
-    aunt_zhang: "/assets/img/aunt_zhang.png",
+    mom_normal: "assets/img/mom_normal.png",
+    mom_happy: "assets/img/mom_happy.png",
+    mom_thinking: "assets/img/mom_thinking.png",
+    mom_surprised: "assets/img/mom_surprised.png",
+    mom_sad: "assets/img/mom_sad.png",
+    aunt_zhang: "assets/img/aunt_zhang.png",
   },
-  ICONS: { phone_icon: "/assets/img/phone_icon.svg" },
+  ICONS: { phone_icon: "assets/img/phone_icon.svg" },
   AUDIO: {
-    bgm: "/assets/audio/bgm.mp3",
-    click: "/assets/audio/click.mp3",
+    bgm: "assets/audio/bgm.mp3",
+    click: "assets/audio/click.mp3",
   },
   COVERS: {
-    news_banner: "/assets/img/news_banner.png",
+    news_banner: "assets/img/news_banner.png",
   },
 };
 
