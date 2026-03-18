@@ -17,6 +17,11 @@ export const ASSETS = {
   COVERS: {
     news_banner: "assets/img/news_banner.png",
   },
+  // 新增背景图片配置
+  BACKGROUNDS: {
+    default: "assets/img/default-bg.jpg", // 默认背景，请确保文件存在
+    // 你可以根据需要继续添加其他背景
+  },
 };
 
 export const DEBUNK_MESSAGES = {

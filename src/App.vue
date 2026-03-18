@@ -76,8 +76,8 @@ const currentCharacter = computed(() => {
 // 背景图片（可动态也可固定，这里演示动态：如果剧本行有 background 字段则使用，否则用默认）
 const currentBackground = computed(() => {
   const line = GAME_STORY.scriptLines.find(l => l.id === store.currentLineId);
-  // 如果剧本行指定了背景，则使用对应的背景图；否则使用默认背景
-  return line?.background ? ASSETS.BACKGROUNDS[line.background] : '/assets/img/default-bg.jpg';
+  // 如果剧本行指定了背景，则使用对应的背景图；否则使用 ASSETS 中的默认背景
+  return line?.background ? ASSETS.BACKGROUNDS[line.background] : ASSETS.BACKGROUNDS.default;
 });
 </script>
 
