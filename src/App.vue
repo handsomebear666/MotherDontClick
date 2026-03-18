@@ -1,5 +1,15 @@
 <template>
   <div class="game-container" :class="{ 'shake-screen': store.isShaking }">
+    <transition name="fade">
+      <StartScreen v-if="!store.hasStarted" />
+    </transition>
+
+    <div v-show="store.hasStarted" style="width: 100%; height: 100%">
+      <Character />
+      <PhoneIcon v-if="!store.showPhoneSystem" />
+      <DialogueUI v-show="!store.showPhoneSystem" />
+    </div>
+
     <Character
       v-if="!store.showPhoneSystem"
       :background="currentBackground"
