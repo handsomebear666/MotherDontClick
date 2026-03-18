@@ -6,6 +6,8 @@ let bgmInstance = null;
 
 export const useGameStore = defineStore("game", {
   state: () => ({
+    hasStarted: false, // 【新增】标记游戏是否已经点击了开始
+
     // 1. 游戏主进度
     gameLevel: 1,
     level2Solved: false,
@@ -33,6 +35,11 @@ export const useGameStore = defineStore("game", {
   }),
 
   actions: {
+    // 【新增】开始游戏的方法
+    startGame() {
+      this.hasStarted = true;
+      this.tryPlayBGM(); // 完美解决浏览器拦截！玩家点击开始按钮时，顺理成章地唤醒 BGM
+    },
     // === 音效管理器 (修复 BGM 漏放的问题) ===
     tryPlayBGM() {
       if (!bgmInstance) {
