@@ -1,6 +1,10 @@
 <template>
   <div class="game-container" :class="{ 'shake-screen': store.isShaking }">
-    <Character :background="currentBackground" :character="currentCharacter" />
+    <Character
+      v-if="!store.showPhoneSystem"
+      :background="currentBackground"
+      :character="currentCharacter"
+    />
     <PhoneIcon v-if="!store.showPhoneSystem" />
     <DialogueUI v-show="!store.showPhoneSystem" />
 
@@ -60,8 +64,7 @@ import ProfileReal from "@/components/phone/ProfileReal.vue";
 import FakeMoments from "@/components/phone/FakeMoments.vue";
 import GroupSearch from "@/components/phone/GroupSearch.vue";
 import ActionMenu from "@/components/phone/ActionMenu.vue";
-import { computed } from 'vue';
-import { useGameStore } from "@/store/useGameStore";
+import { computed } from "vue";
 import { GAME_STORY, ASSETS } from "@/data/story"; // 导入剧本和资源
 
 const store = useGameStore();
@@ -69,15 +72,17 @@ const reloadGame = () => location.reload();
 
 // 根据当前剧本行获取立绘
 const currentCharacter = computed(() => {
-  const line = GAME_STORY.scriptLines.find(l => l.id === store.currentLineId);
-  return line?.emotion ? ASSETS.AVATARS[`mom_${line.emotion}`] : '';
+  const line = GAME_STORY.scriptLines.find((l) => l.id === store.currentLineId);
+  return line?.emotion ? ASSETS.AVATARS[`mom_${line.emotion}`] : "";
 });
 
 // 背景图片（可动态也可固定，这里演示动态：如果剧本行有 background 字段则使用，否则用默认）
 const currentBackground = computed(() => {
-  const line = GAME_STORY.scriptLines.find(l => l.id === store.currentLineId);
+  const line = GAME_STORY.scriptLines.find((l) => l.id === store.currentLineId);
   // 如果剧本行指定了背景，则使用对应的背景图；否则使用 ASSETS 中的默认背景
-  return line?.background ? ASSETS.BACKGROUNDS[line.background] : ASSETS.BACKGROUNDS.default;
+  return line?.background
+    ? ASSETS.BACKGROUNDS[line.background]
+    : ASSETS.BACKGROUNDS.default;
 });
 </script>
 
